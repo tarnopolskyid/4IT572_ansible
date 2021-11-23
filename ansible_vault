@@ -1,0 +1,5 @@
+access_key:
+secret_key:
+session-token:
+
+ansible-playbook: ec2_deploy.yml --ask-vault-pass
