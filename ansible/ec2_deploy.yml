@@ -4,7 +4,7 @@
 
   tasks:
     - name: Launch EC2 instance
-      ec2:
+      amazon.aws.ec2:
         instance_type: t2.micro
         image: ami-04902260ca3d33422
         region: us-east-1
