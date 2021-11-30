@@ -54,7 +54,7 @@
     - service:
         name: docker
         state: started
-        enable: yes
+        enabled: yes
       become: yes
     - name: Set rights to Docker
       shell: usermod -a -G docker ec2-user
