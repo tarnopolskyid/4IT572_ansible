@@ -33,42 +33,42 @@
       loop: "{{ ec2.instances }}"
 
 - name: Configure EC2
-    hosts: launched
-    connection: ssh
+  hosts: launched
+  connection: ssh
 
-    tasks:
-      - name: Add Centos Extras
-        shell: yum-config-manager --enable extras
-        become: yes
-      - name: Enable Docker package
-        shell: amazon-linux-extras enable docker
-        become: yes
-      - name: Install Docker and Git
-        yum:
-          name:
-            - docker
-            - git
-          state: latest
-          update_cache: yes
-        become: yes
-      - service:
-          name: docker
-          state: started
-          enable: yes
-      - name: Set rights to Docker
-        shell: usermod -a -G docker ec2-user
-        become: yes
-      - name: Checkout Git repo
-        git:
-          repo: "https://github.com/vfalada/4IT572_docker.git"
-          dest: ./app
-      - name: Build Docker
-        shell: cd app && docker build -t eshop:latest .
-        become: yes
-      - name: Run eshop
-        shell: docker run -p 80:3000 eshop
-        async: 45
-        poll: 0
-        become: yes
-      - wait_for:
-          port: 80
+  tasks:
+    - name: Add Centos Extras
+      shell: yum-config-manager --enable extras
+      become: yes
+    - name: Enable Docker package
+      shell: amazon-linux-extras enable docker
+      become: yes
+    - name: Install Docker and Git
+      yum:
+        name:
+          - docker
+          - git
+        state: latest
+        update_cache: yes
+      become: yes
+    - service:
+        name: docker
+        state: started
+        enable: yes
+    - name: Set rights to Docker
+      shell: usermod -a -G docker ec2-user
+      become: yes
+    - name: Checkout Git repo
+      git:
+        repo: "https://github.com/vfalada/4IT572_docker.git"
+        dest: ./app
+    - name: Build Docker
+      shell: cd app && docker build -t eshop:latest .
+      become: yes
+    - name: Run eshop
+      shell: docker run -p 80:3000 eshop
+      async: 45
+      poll: 0
+      become: yes
+    - wait_for:
+        port: 80
