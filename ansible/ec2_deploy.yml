@@ -6,17 +6,17 @@
     - name: Launch EC2 instance
       amazon.aws.ec2:
         instance_type: t2.small
-        image: ami-04902260ca3d33422
+        image: ami-061ac2e015473fbe2
         region: us-east-1
-        key_name: devops
-        vpc_subnet_id: subnet-080cd42e12339aabe
+        key_name: devopskey
+        vpc_subnet_id: subnet-068ab4bae12eb8dcb
         assign_public_ip: yes
         count: 1
         group: eshop
         wait: true
-        aws_access_key: "ASIAQXZQJ2TVG7TYWHGL"
-        aws_secret_key: "vyOqzxXnywjssxqpafkdWBiWYCkg3STZH3gvbZyu"
-        security_token: "FwoGZXIvYXdzEDoaDMC8wSIJWUPyrK946CK3AaiiHT+RWK5FFWEstTubPFRd+J8mp61wztduBF7fmdgANjJTWKJee9gQhtcSaAYBd0T4XrTGGigNjvwCRzfnDZfTbemwDouXqkuAQXKYSf8cNG0JvXbd3TKlETN6jGhEpv+OtOnNnQurN3oU6U6kASNm5XAZOXgd5zIkNDxvNp1nP4Os9lvVL8tbbEqsO+reOK03y4CKz3GZtdwtYv2v2So5G4odJyiaPRl3QhhDhuQcVNCVvBeR3ijsmZmNBjItpa8HAHG1V42vQAsPUnr0gYGVZA9ZaeG93tEQkOQT/MMBXBqnxTR31aiWt1Ap"
+        aws_access_key: "access_key"
+        aws_secret_key: "secret_key"
+        security_token: "session_token"
       register: ec2
 
     - name: Add new instance to host group
