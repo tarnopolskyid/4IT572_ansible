@@ -61,7 +61,7 @@
       become: yes
     - name: Checkout Git repo
       git:
-        repo: "https://github.com/vfalada/4IT572_docker.git"
+        repo: "https://github.com/tarnopolskyid/4IT572_DevOps.git"
         dest: ./app
     - name: Build Docker
       shell: cd app && docker build -t eshop:latest .
